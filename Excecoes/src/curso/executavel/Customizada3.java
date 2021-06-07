@@ -10,13 +10,12 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 import curso.contantes.StatusAlunos;
-import curso.excecoes.ExcecaoProcessarNota;
 import funcoes.heranca.FuncaoAutenticacao;
 import subclasses.Aluno;
 import subclasses.Diretor;
 import subclasses.Disciplina;
 
-public class Customizada2 {
+public class Customizada3 {
 
 	public static void main(String[] args) {
 		try {
@@ -72,7 +71,7 @@ public class Customizada2 {
 					alunos.add(aluno1);
 
 				}
-				maps.put(StatusAlunos.APROVADO, new ArrayList<Aluno>()); 
+				maps.put(StatusAlunos.APROVADO, new ArrayList<Aluno>());
 				maps.put(StatusAlunos.APROVADOGENIO, new ArrayList<Aluno>());
 				maps.put(StatusAlunos.RECUPERACAO, new ArrayList<Aluno>());
 				maps.put(StatusAlunos.REPROVADO, new ArrayList<Aluno>());
@@ -109,7 +108,7 @@ public class Customizada2 {
 			} else {
 				JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos!");
 			}
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 
 			StringBuilder saida = new StringBuilder();// Classe do próprio java para trabalhar com o texto
 
@@ -126,36 +125,14 @@ public class Customizada2 {
 
 			}
 			JOptionPane.showMessageDialog(null, "Erro de conversão de número." + saida.toString());
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(null, "Erro de null pointer: " + e.toString());
-		}
-		catch (ExcecaoProcessarNota e) {
-		JOptionPane.showMessageDialog(null, "Erro de exceção customizada: " + e.getMessage());
-		}
-
-		catch (ClassCastException e) {
-			JOptionPane.showMessageDialog(null, "Erro de Classe Cast: " + e.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro inesperado: " + e.getClass().getName());
 		} finally {
 			JOptionPane.showMessageDialog(null, "Você está estudando java!");
 		}
 	}
-	
-	//Throw é para lançar uma exceção e Throws é na declaração do método para retornar pro pai
-	//Essa exceção customizada tem que estar dentro do TryCatch para ser lançada para cima, onde pode ser implementada
-	//O método tem que ser static para poder ser acessado na classe statica
-	public static void lerArquivo () throws ExcecaoProcessarNota {//Método para a exceção customizada
-		
-		try {
-			
-			File fil = new File("c://lines.txt");
-			Scanner scanner = new Scanner(fil);
-			}catch (FileNotFoundException e){
-				
-				throw new ExcecaoProcessarNota(e.getMessage()); //O java exige que lance pra cima - delega essa mensagem porque tem que capturar no processo principal
-				
-			}
+
+	public static void lerArquivo() throws FileNotFoundException {
+
+		File fil = new File("c://lines.txt");
+		Scanner scanner = new Scanner(fil);
 	}
 }
