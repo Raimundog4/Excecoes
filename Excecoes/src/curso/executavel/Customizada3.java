@@ -20,7 +20,7 @@ public class Customizada3 {
 	public static void main(String[] args) {
 		try {
 
-			lerArquivo();
+			//lerArquivo();
 
 			String login = JOptionPane.showInputDialog("Informe o seu usuário");
 			String senha = JOptionPane.showInputDialog("Informe a sua senha");
@@ -39,8 +39,9 @@ public class Customizada3 {
 					Aluno aluno1 = new Aluno();
 
 					aluno1.setNome(nome);
-
-					for (int pos = 1; pos <= 1; pos++) {
+					
+					quantidade = JOptionPane.showInputDialog("Quantas disciplinas?");
+					for (int pos = 1; pos <= Integer.valueOf(quantidade); pos++) {
 						String nomeDisciplina = JOptionPane.showInputDialog("Qual a disciplina " + pos + " ?");
 						String notaDisciplina = JOptionPane.showInputDialog("Qual a nota " + pos + " ?");
 
